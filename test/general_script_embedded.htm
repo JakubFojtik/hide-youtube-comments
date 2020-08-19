@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+<body>
+<div id="content"></div>
+<script>
+fetch('../hide-youtube-comments.user.js', {
+  method: 'GET',
+  headers: {
+  }
+}).then(response => {
+  if (response.ok) {
+    response.text().then(async (response) => {
+		let script = document.createElement("script");
+		let promise = new Promise(res => script.onload = res);
+		script.innerHTML=response;
+		document.body.appendChild(script);
+		return promise;
+    });
+  }
+});
+</script>
+
+<div id='comments'>
+<test><ytd-comment-thread-renderer><b><ytd-expander><u><img /><i>a</i></u></ytd-expander></b></ytd-comment-thread-renderer></test>
+<test><ytd-comment-thread-renderer><b><ytd-expander><u><img /><i>0%</i></u></ytd-expander></b></ytd-comment-thread-renderer></test>
+</div>
+
+</body>
+</html>
